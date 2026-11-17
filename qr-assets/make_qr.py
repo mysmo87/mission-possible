@@ -1,6 +1,6 @@
 import segno, cv2, numpy as np
 from PIL import Image, ImageDraw, ImageFont
-URL="https://mysmo87.github.io/mission-possible/"
+URL="https://sas-wpssession.com/"
 NAVY="#062B55"; out="/home/claude/qr-assets/"
 qr=segno.make(URL, error='h', micro=False)
 print("version",qr.version,"ecc",qr.error)
