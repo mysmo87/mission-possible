@@ -50,6 +50,7 @@ h2{font-size:clamp(1.5rem,5.2vw,2.2rem)}
 .connect-banner strong{display:block;color:var(--white);font-size:1.05rem;margin-bottom:4px}
 .connect-banner p{color:var(--muted);font-size:.93rem}
 .hero-cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.hero-cta[hidden]{display:none}
 
 /* Buttons */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:12px 18px;
@@ -166,6 +167,10 @@ section{padding:44px 0}
       <div>
         <div class="eyebrow">Let's Stay Connected</div>
         <h1 id="heroTitle">Mission Possible. <span>Together.</span></h1>
+        <div class="hero-cta" id="deckWrap" hidden>
+          <a class="btn btn-primary" id="deckLink" href="#" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14"/></svg><span id="deckLabel">Download the presentation</span></a>
+        </div>
       </div>
     </div>
   </section>
@@ -216,6 +221,10 @@ section{padding:44px 0}
   if (S.title) document.title = S.title;
   if (S.noIndex !== false){ var m=document.createElement("meta"); m.name="robots"; m.content="noindex, nofollow"; document.head.appendChild(m); }
     
+  /* ---------- Presentation download ---------- */
+  var D = C.presentation || {};
+  if (has(D.file)) { $("deckLink").href = D.file; $("deckLink").setAttribute("download",""); $("deckLabel").textContent = D.label || "Download the presentation"; $("deckWrap").hidden = false; }
+
   /* ---------- Directory ---------- */
   var R = C.regions || {americas:"Americas",emea:"Europe & Middle East",apac:"Asia-Pacific"};
   var experts = (C.experts||[]).filter(function(e){ return e && e.publish !== false && e.placeholder !== true && typeof e.name==="string" && e.name.trim(); });

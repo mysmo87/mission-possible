@@ -17,6 +17,12 @@ window.HUB_CONFIG = {
     noIndex: true,          // keeps the page out of search engines
   },
 
+  // Presentation download button. Set file to "" to hide the button.
+  presentation: {
+    label: "Download the presentation (PDF)",
+    file: "Mission-Possible-WPS-2026.pdf"
+  },
+
   regions: {
     americas: "Americas",
     emea: "Europe & Middle East",

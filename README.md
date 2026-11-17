@@ -17,6 +17,11 @@ Live page: https://sas-wpssession.com/ (backup: https://mysmo87.github.io/missio
 
 The QR code never needs to change: the address stays the same.
 
+## Presentation download
+- The PDF is `Mission-Possible-WPS-2026.pdf` in the repository root.
+- To replace it, upload a new PDF with exactly the same file name.
+- To hide the button, set `presentation.file` to `""` in `config.js`.
+
 ## Notes
 - Static page, no backend, no database, no tracking, no secrets.
 - Initials circles are generated automatically from each name.
