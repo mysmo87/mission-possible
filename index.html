@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#062B55">
+<meta name="description" content="Connecting law enforcement expertise with the power of AI.">
+<meta name="referrer" content="no-referrer">
+<title>Mission Possible | Let's Stay Connected</title>
+<style>
+:root{
+  --navy:#062B55; --navy-deep:#041D3B; --navy-ink:#03152B;
+  --blue:#0A7CFF; --blue-bright:#3FA9FF; --cyan:#7FD3FF;
+  --white:#FFFFFF; --text:#E8F0FA; --muted:#A9BDD6; --line:rgba(127,211,255,.16);
+  --card:rgba(255,255,255,.045); --card-hover:rgba(255,255,255,.075);
+  --radius:16px; --max:1120px;
+  --font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--font);background:var(--navy);color:var(--text);line-height:1.55;
+  background-image:radial-gradient(1200px 600px at 85% -10%,rgba(10,124,255,.22),transparent 60%),
+  radial-gradient(900px 500px at -10% 40%,rgba(63,169,255,.10),transparent 60%),
+  linear-gradient(180deg,var(--navy) 0%,var(--navy-deep) 70%,var(--navy-ink) 100%);
+  background-attachment:fixed;min-height:100vh;overflow-x:hidden}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--cyan);outline-offset:3px;border-radius:6px}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
+.eyebrow{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--cyan);font-weight:600}
+h1,h2,h3{color:var(--white);font-weight:700;letter-spacing:-.015em;line-height:1.12}
+h2{font-size:clamp(1.5rem,5.2vw,2.2rem)}
+.lead{color:var(--muted);font-size:1rem}
+
+/* Top bar */
+.top{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;color:var(--white);font-size:.95rem;letter-spacing:.02em}
+.brand .dot{width:8px;height:8px;border-radius:50%;background:var(--blue-bright);box-shadow:0 0 12px var(--blue-bright)}
+.event{font-size:.72rem;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+
+/* Hero */
+.hero{position:relative;padding:56px 0 8px;overflow:hidden}
+.hero h1{margin-bottom:0!important}
+.hero-grid{display:grid;gap:8px;align-items:center}
+.hero h1{font-size:clamp(2.2rem,9vw,3.9rem);margin:12px 0 14px}
+.hero h1 span{background:linear-gradient(90deg,var(--blue-bright),var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero .sub{font-size:clamp(1.05rem,3.8vw,1.3rem);color:var(--white);font-weight:500;margin-bottom:12px}
+.hero .support{color:var(--muted);max-width:52ch}
+.connect-banner{margin-top:26px;padding:16px 18px;border:1px solid var(--line);border-radius:var(--radius);
+  background:linear-gradient(135deg,rgba(10,124,255,.14),rgba(255,255,255,.02))}
+.connect-banner strong{display:block;color:var(--white);font-size:1.05rem;margin-bottom:4px}
+.connect-banner p{color:var(--muted);font-size:.93rem}
+.hero-cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:12px 18px;
+  border-radius:12px;font:600 .95rem var(--font);text-decoration:none;cursor:pointer;border:1px solid transparent;
+  transition:transform .15s ease,background .2s ease,border-color .2s ease,box-shadow .2s ease;-webkit-tap-highlight-color:transparent}
+.btn svg{width:18px;height:18px;flex:none}
+.btn-primary{background:var(--blue);color:var(--white);box-shadow:0 6px 24px rgba(10,124,255,.35)}
+.btn-primary:hover{background:#1A88FF;transform:translateY(-1px)}
+.btn-ghost{background:rgba(255,255,255,.04);color:var(--white);border-color:rgba(255,255,255,.18)}
+.btn-ghost:hover{border-color:var(--cyan);background:rgba(127,211,255,.08)}
+.btn[aria-disabled="true"]{opacity:.42;pointer-events:none;box-shadow:none}
+.btn-sm{min-height:40px;padding:8px 12px;font-size:.85rem;border-radius:10px}
+
+/* Sections */
+section{padding:44px 0}
+#network{padding-top:24px}
+.section-head{margin-bottom:22px}
+.section-head .lead{margin-top:8px;max-width:60ch}
+
+/* Primary card */
+.primary-card{position:relative;border-radius:22px;padding:24px;border:1px solid rgba(127,211,255,.28);
+  background:linear-gradient(160deg,rgba(10,124,255,.18),rgba(6,43,85,.4) 55%,rgba(255,255,255,.03));overflow:hidden}
+.primary-card::before{content:"";position:absolute;top:-1px;left:24px;right:24px;height:1px;
+  background:linear-gradient(90deg,transparent,var(--cyan),transparent)}
+.pc-head{display:flex;gap:16px;align-items:center}
+.avatar{flex:none;width:72px;height:72px;border-radius:50%;display:grid;place-items:center;font-weight:700;font-size:1.4rem;color:var(--white);
+  background:linear-gradient(135deg,var(--blue),#0650A8);border:2px solid rgba(127,211,255,.45);overflow:hidden}
+.avatar img{width:100%;height:100%;object-fit:cover}
+.pc-name{font-size:1.45rem}
+.pc-role{color:var(--cyan);font-weight:600;font-size:.92rem;margin-top:2px}
+.pc-org{color:var(--muted);font-size:.85rem;margin-top:2px}
+.pc-bio{color:var(--text);margin:18px 0 20px;font-size:.98rem}
+.pc-actions{display:grid;grid-template-columns:1fr;gap:10px}
+.note{font-size:.78rem;color:var(--muted);margin-top:12px}
+
+/* Directory controls */
+.chips[hidden]{display:none}
+.controls{display:grid;gap:12px;margin-bottom:22px;position:sticky;top:0;z-index:5;padding:12px 0;
+  background:linear-gradient(180deg,var(--navy-deep) 70%,rgba(4,29,59,0))}
+.search{position:relative}
+.search svg{position:absolute;left:14px;top:50%;transform:translateY(-50%);width:18px;height:18px;color:var(--muted)}
+.search input{width:100%;min-height:48px;padding:12px 14px 12px 42px;border-radius:12px;border:1px solid rgba(255,255,255,.16);
+  background:rgba(255,255,255,.05);color:var(--white);font:400 1rem var(--font)}
+.search input::placeholder{color:#8DA3BF}
+.search input:focus{outline:none;border-color:var(--blue-bright);box-shadow:0 0 0 3px rgba(63,169,255,.2)}
+.chips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;min-height:40px;padding:8px 14px;border-radius:999px;border:1px solid rgba(255,255,255,.16);background:transparent;
+  color:var(--muted);font:600 .85rem var(--font);cursor:pointer;transition:all .2s ease}
+.chip[aria-pressed="true"]{background:var(--white);color:var(--navy);border-color:var(--white)}
+.chip .n{opacity:.6;margin-left:4px;font-weight:500}
+
+.region{margin-bottom:30px}
+.region-title{display:flex;align-items:center;gap:12px;margin-bottom:14px;font-size:1.05rem}
+.region-title::after{content:"";flex:1;height:1px;background:var(--line)}
+.grid{display:grid;grid-template-columns:1fr;gap:12px}
+.card{border:1px solid rgba(255,255,255,.09);background:var(--card);border-radius:var(--radius);padding:18px;
+  transition:background .2s ease,border-color .2s ease,transform .2s ease;display:flex;flex-direction:column;gap:10px}
+.card:hover{background:var(--card-hover);border-color:rgba(127,211,255,.3)}
+.card h3{font-size:1.05rem}
+.card .role{color:var(--text);font-size:.9rem}
+.card .country{display:flex;align-items:center;gap:6px;color:var(--muted);font-size:.82rem}
+.card .country svg{width:14px;height:14px}
+.card{flex-direction:row;align-items:center;gap:14px}
+.ini{flex:none;width:52px;height:52px;border-radius:50%;display:grid;place-items:center;font-weight:700;font-size:1.05rem;color:var(--white);letter-spacing:.02em;
+  background:linear-gradient(135deg,var(--blue),#0650A8);border:2px solid rgba(127,211,255,.4)}
+.who{min-width:0}
+.mail{display:inline-block;margin-top:3px;color:var(--cyan);font-size:.88rem;text-decoration:none;word-break:break-all;min-height:24px}
+.mail:hover{text-decoration:underline}
+.card .links{display:flex;gap:8px;flex-wrap:wrap;margin-top:auto;padding-top:4px}
+.card.placeholder{border-style:dashed;border-color:rgba(127,211,255,.3);background:rgba(127,211,255,.03)}
+.card.placeholder .ph{display:inline-block;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--cyan);
+  border:1px solid rgba(127,211,255,.35);border-radius:999px;padding:2px 8px;align-self:flex-start}
+.card.placeholder h3,.card.placeholder .role,.card.placeholder .country{color:#7C93B0;font-style:italic}
+.empty{color:var(--muted);text-align:center;padding:30px 10px;border:1px dashed var(--line);border-radius:var(--radius)}
+
+/* Closing */
+.closing{text-align:center;padding:56px 0 calc(48px + env(safe-area-inset-bottom))}
+.closing-box{border-radius:24px;padding:36px 22px;border:1px solid var(--line);
+  background:radial-gradient(600px 240px at 50% 0%,rgba(10,124,255,.22),transparent 70%),rgba(255,255,255,.025)}
+.closing h2{max-width:20ch;margin:10px auto 14px}
+.closing p{color:var(--muted);max-width:56ch;margin:0 auto 24px}
+
+
+/* Reveal */
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+
+@media (min-width:640px){
+  .wrap{padding:0 32px}
+  .pc-actions{grid-template-columns:repeat(3,1fr)}
+  .grid{grid-template-columns:repeat(2,1fr)}
+  .controls{grid-template-columns:minmax(0,1fr) auto;align-items:center}
+  }
+@media (min-width:960px){
+  .hero{padding:40px 0 60px}
+    .grid{grid-template-columns:repeat(3,1fr)}
+  .primary-card{padding:34px;display:grid;grid-template-columns:1.2fr 1fr;gap:30px;align-items:center}
+  .pc-bio{margin-bottom:0}
+  .pc-actions{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){
+  *{transition:none!important;animation:none!important;scroll-behavior:auto!important}
+  .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<main>
+  <!-- HERO -->
+  <section class="hero" aria-labelledby="heroTitle">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow">Let's Stay Connected</div>
+        <h1 id="heroTitle">Mission Possible. <span>Together.</span></h1>
+      </div>
+    </div>
+  </section>
+
+  <!-- NETWORK -->
+  <section id="network" aria-labelledby="netTitle">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <h2 id="netTitle">Meet the team</h2>
+        <p class="lead">Law enforcement and AI specialists who understand both the operational reality and the technology.</p>
+      </div>
+      <div class="controls">
+        <label class="search">
+          <span class="sr" style="position:absolute;left:-9999px">Search experts</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+          <input id="q" type="search" placeholder="Search by name" autocomplete="off" enterkeyhint="search">
+        </label>
+        <div class="chips" role="group" aria-label="Filter by region" id="chips"></div>
+      </div>
+      <div id="directory" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <!-- CLOSING -->
+  <section class="closing" aria-labelledby="closeTitle">
+    <div class="wrap">
+      <div class="closing-box reveal">
+        <div class="eyebrow">Next steps</div>
+        <h2 id="closeTitle">Your Next Mission Starts With a Conversation.</h2>
+        <p>Whether you're exploring AI opportunities, tackling complex investigations, or modernizing policing operations, we're happy to connect.</p>
+        <a class="btn btn-primary" id="getInTouch" href="#network">Get in Touch</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script src="config.js"></script>
+<script>
+(function(){
+  "use strict";
+  var C = window.HUB_CONFIG || {}; var P = C.primary || {}; var S = C.site || {};
+  var $ = function(id){ return document.getElementById(id); };
+  var has = function(v){ return typeof v === "string" && v.trim() !== ""; };
+  var esc = function(s){ return String(s == null ? "" : s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];}); };
+  var safeUrl = function(u){ return /^https:\/\//i.test(u||"") ? u : ""; };
+  var safeEmail = function(e){ return /^[^\s@<>"]+@[^\s@<>"]+\.[^\s@<>"]+$/.test(e||"") ? e : ""; };
+
+  if (S.title) document.title = S.title;
+  if (S.noIndex !== false){ var m=document.createElement("meta"); m.name="robots"; m.content="noindex, nofollow"; document.head.appendChild(m); }
+    
+  /* ---------- Directory ---------- */
+  var R = C.regions || {americas:"Americas",emea:"Europe & Middle East",apac:"Asia-Pacific"};
+  var experts = (C.experts||[]).filter(function(e){ return e && e.publish !== false && e.placeholder !== true && typeof e.name==="string" && e.name.trim(); });
+  experts.forEach(function(e){ if (!R[e.region]) e.region = "unassigned"; });
+  var order = Object.keys(R).filter(function(k){ return experts.some(function(e){ return e.region===k; }); });
+  var grouped = order.length > 0;
+  if (experts.some(function(e){ return e.region==="unassigned"; })) { R = Object.assign({}, R, {unassigned:"Global Network"}); order.push("unassigned"); }
+  if (!grouped) document.getElementById("chips").hidden = true;
+  var state = { region:"all", q:"" };
+  var pin = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>';
+
+  function renderChips(){
+    var counts = {all:experts.length}; order.forEach(function(k){ counts[k]=experts.filter(function(e){return e.region===k;}).length; });
+    var opts = [["all","All regions"]].concat(order.map(function(k){return [k,R[k]];}));
+    $("chips").innerHTML = opts.map(function(o){
+      return '<button type="button" class="chip" data-r="'+o[0]+'" aria-pressed="'+(state.region===o[0])+'">'+esc(o[1])+'<span class="n">'+counts[o[0]]+'</span></button>';
+    }).join("");
+  }
+  function initials(n){ return String(n||"").trim().split(/\s+/).filter(Boolean).map(function(w){return w[0];}).slice(0,2).join("").toUpperCase(); }
+  function card(e){
+    var em = safeEmail(e.email);
+    return '<div class="card"><div class="ini" aria-hidden="true">'+esc(initials(e.name))+'</div><div class="who"><h3>'+esc(e.name)+'</h3>'+
+      (em ? '<a class="mail" href="mailto:'+esc(em)+'?subject='+encodeURIComponent("Mission Possible | Let\'s connect")+'">'+esc(em)+'</a>' : '')+'</div></div>';
+  }
+  function matches(e){
+    if (state.region!=="all" && e.region!==state.region) return false;
+    if (!state.q) return true;
+    var hay = [e.name,e.email,R[e.region]].join(" ").toLowerCase();
+    return state.q.split(/\s+/).every(function(t){ return hay.indexOf(t) > -1; });
+  }
+  function render(){
+    var html = "";
+    order.forEach(function(k){
+      if (state.region!=="all" && state.region!==k) return;
+      var list = experts.filter(function(e){ return e.region===k && matches(e); });
+      if (!list.length) return;
+      html += '<div class="region">'+(grouped?'<h3 class="region-title">'+esc(R[k])+'</h3>':'')+'<div class="grid">'+list.map(card).join("")+'</div></div>';
+    });
+    $("directory").innerHTML = html || '<div class="empty">No experts match your search.</div>';
+  }
+  $("chips").addEventListener("click", function(ev){
+    var b = ev.target.closest(".chip"); if (!b) return; state.region = b.getAttribute("data-r"); renderChips(); render();
+  });
+  $("q").addEventListener("input", function(ev){ state.q = ev.target.value.trim().toLowerCase(); render(); });
+  renderChips(); render();
+
+  /* ---------- Reveal on scroll ---------- */
+  var els = document.querySelectorAll(".reveal");
+  if ("IntersectionObserver" in window){
+    var io = new IntersectionObserver(function(es){ es.forEach(function(x){ if (x.isIntersecting){ x.target.classList.add("in"); io.unobserve(x.target); } }); }, {threshold:.12});
+    els.forEach(function(el){ io.observe(el); });
+  } else els.forEach(function(el){ el.classList.add("in"); });
+
+})();
+</script>
+</body>
+</html>
