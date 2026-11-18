@@ -20,7 +20,7 @@ window.HUB_CONFIG = {
   // Presentation download button. Set file to "" to hide the button.
   presentation: {
     label: "Download the presentation (PDF)",
-    file: "Mission-Possible-WPS-2026.pdf"
+    file: ""   // e.g. "Mission-Possible-WPS-2026.pdf" once the new version is uploaded
   },
 
   regions: {
