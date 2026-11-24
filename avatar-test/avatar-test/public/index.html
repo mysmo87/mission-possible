@@ -222,12 +222,15 @@ h1 span{background:linear-gradient(90deg,var(--blue-bright),var(--cyan));-webkit
         g.addColorStop(0, "#062B55"); g.addColorStop(1, "#0A3F7A");
         ctx.fillStyle = g; ctx.fillRect(0, H, W, band);
         ctx.fillStyle = "#3FA9FF"; ctx.fillRect(0, H, W, Math.max(3, band * 0.03));
-        ctx.textAlign = "center"; ctx.fillStyle = "#FFFFFF";
-        ctx.font = `700 ${Math.round(band * 0.34)}px -apple-system,Segoe UI,Roboto,Arial,sans-serif`;
-        ctx.fillText("Proudly AI-Signed", W / 2, H + band * 0.52);
-        ctx.fillStyle = "#7FD3FF";
-        ctx.font = `600 ${Math.round(band * 0.15)}px -apple-system,Segoe UI,Roboto,Arial,sans-serif`;
-        ctx.fillText("DIGITAL TRAVELER  ·  MISSION POSSIBLE", W / 2, H + band * 0.8);
+                ctx.textAlign = "center";
+        const fit = (text, weight, size, y, color) => {
+          ctx.fillStyle = color;
+          do { ctx.font = `${weight} ${size}px -apple-system,Segoe UI,Roboto,Arial,sans-serif`; size--; }
+          while (ctx.measureText(text).width > W * 0.9 && size > 10);
+          ctx.fillText(text, W / 2, y);
+        };
+        fit("Proudly Signed for My Agentic Trip", 700, Math.round(band * 0.30), H + band * 0.50, "#FFFFFF");
+        fit("WITH GDRFA  ·  AGENTIC AI JOURNEY", 600, Math.round(band * 0.15), H + band * 0.80, "#7FD3FF");
         $("download").href = c.toDataURL("image/jpeg", 0.92);
         resolve();
       };
