@@ -1,0 +1,15 @@
+{
+  "name": "mission-possible-avatar-test",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Test: turn a visitor selfie into a 3D 'Digital Traveler' avatar via fal (FLUX PuLID). Self-contained; delete this folder to remove it.",
+  "type": "module",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "start": "node --env-file-if-exists=.env server.js",
+    "check": "node --check server.js"
+  },
+  "dependencies": {
+    "@fal-ai/client": "^1.11.0"
+  }
+}
