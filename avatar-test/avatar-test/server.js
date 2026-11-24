@@ -5,7 +5,7 @@ import { readFile } from "node:fs/promises";
 import { fal } from "@fal-ai/client";
 
 const PORT = Number(process.env.PORT) || 3000;
-const ENDPOINT = "fal-ai/flux-pulid";
+const ENDPOINT = "fal-ai/flux-pro/kontext"; // edits the real photo, so likeness is kept
 const MAX_BODY = 8 * 1024 * 1024; // 8 MB (the page resizes selfies to ~1024px first)
 
 if (!process.env.FAL_KEY) {
@@ -13,16 +13,17 @@ if (!process.env.FAL_KEY) {
 }
 fal.config({ credentials: process.env.FAL_KEY });
 
+const KEEP =
+  "Keep this exact person recognizable: same face shape, eyes, nose, mouth, skin tone, " +
+  "same hairstyle or baldness, same facial hair, same age. Do not add hair, glasses or accessories that are not in the photo. ";
 const STYLES = {
   "digital-traveler":
-    "3D animated character portrait, stylized Pixar-like cinematic render of the same person, " +
-    "a confident digital traveler wearing a sleek modern travel jacket with subtle glowing cyan neon accents, " +
-    "holding a glowing holographic digital passport, standing in a futuristic smart airport gate " +
-    "with holographic displays and the Dubai skyline at dusk behind, navy and electric blue color palette, " +
-    "soft rim lighting, shallow depth of field, friendly expression, high detail, upper body shot",
+    "Transform this person into a stylized 3D animated character, Pixar-like cinematic render. " + KEEP +
+    "Show them from the waist up as a confident, smiling digital traveler wearing a sleek modern navy travel jacket " +
+    "with subtle glowing cyan neon accents, holding a glowing holographic digital passport, " +
+    "standing in a futuristic smart airport gate with holographic displays and the Dubai skyline at dusk behind. " +
+    "Navy and electric blue palette, soft rim lighting, high detail. No text or logos.",
 };
-const NEGATIVE =
-  "text, watermark, logo, extra fingers, deformed hands, distorted face, blurry, low quality, photo-realistic skin";
 
 // Small per-IP limiter so a test link can't run up the bill.
 const hits = new Map();
@@ -81,14 +82,13 @@ async function handleAvatar(req, res) {
     const result = await fal.subscribe(ENDPOINT, {
       input: {
         prompt,
-        negative_prompt: NEGATIVE,
-        reference_image_url: image,
-        image_size: "portrait_4_3",
-        num_inference_steps: 20,
-        guidance_scale: 4,
-        id_weight: 1,
+        image_url: image,
+        aspect_ratio: "3:4",
+        guidance_scale: 3.5,
+        num_images: 1,
+        output_format: "jpeg",
+        safety_tolerance: "2",
         sync_mode: true, // return a data URI; not kept in fal request history
-        enable_safety_checker: true,
       },
       onEnqueue: (id) => { requestId = id; },
     });
